@@ -1,29 +1,30 @@
+use futures::sink::Unfold;
 use ollama_rs::{Ollama, generation::completion::request::GenerationRequest};
 use tokio::io::{self, AsyncWriteExt};
 use tokio_stream::StreamExt;
 
-struct Message {
+pub struct Message {
     role: String,
     content: String,
 }
 
 impl Message {
-    fn new(role: String, content: String) -> Self {
+    pub fn new(role: String, content: String) -> Self {
         Self { role, content }
     }
 }
 
-struct Room {
+pub struct Room {
     id: i32,
     messages: Vec<Message>,
 }
 
 impl Room {
-    fn new(id: i32, messages: Vec<Message>) -> Self {
+    pub fn new(id: i32, messages: Vec<Message>) -> Self {
         Self { id, messages }
     }
 
-    fn generate_prompt(&self) -> String {
+    pub fn generate_prompt(&self) -> String {
         let mut prompt = String::new();
         let messages = &self.messages;
 
