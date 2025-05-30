@@ -1,5 +1,10 @@
 # 🚀 Linimasa.AI
 
+<div align="center">
+  <img src="files/chat.png" alt="Linimasa.AI Chat Interface">
+</div>
+
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Linimasa.AI adalah solusi manajemen proyek berbasis AI yang revolusioner, dirancang khusus untuk pasar Indonesia. Dengan memanfaatkan kekuatan AI, Linimasa.AI memungkinkan Anda membuat timeline proyek yang detail dan terstruktur hanya dengan mengetikkan prompt sederhana.
