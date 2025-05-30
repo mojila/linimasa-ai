@@ -1,7 +1,6 @@
-mod example_ollama;
-
+mod example;
 
 #[tokio::main]
 async fn main() {
-    example_ollama::example_stream_ollama().await.unwrap();
+    example::ollama::example_stream_ollama().await.unwrap();
 }
