@@ -104,10 +104,10 @@ export function ChatContainer({ roomId = "general" }: ChatContainerProps) {
                 <Bot className="h-12 w-12 text-primary" />
               </div>
               <h3 className="text-2xl font-bold mb-2">
-                Welcome to {roomId.charAt(0).toUpperCase() + roomId.slice(1)} Room!
+                Selamat memulai project {roomId.charAt(0).toUpperCase() + roomId.slice(1)}!
               </h3>
               <p className="text-muted-foreground mb-6 max-w-md">
-                Start chatting and sharing files with others in this room.
+                Mulai chatting sama si lini!
               </p>
             </div>
           ) : (
