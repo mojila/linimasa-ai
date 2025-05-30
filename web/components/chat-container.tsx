@@ -29,7 +29,7 @@ interface MessageWithAttachment {
   }
 }
 
-export function ChatContainer({ roomId = "general" }: ChatContainerProps) {
+export function ChatContainer({ roomId = "" }: ChatContainerProps) {
   const [messages, setMessages] = useState<MessageWithAttachment[]>([])
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
