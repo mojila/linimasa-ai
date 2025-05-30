@@ -132,7 +132,7 @@ export function Sidebar() {
           variant="outline"
           className="w-full justify-start gap-2 mb-2"
           onClick={() => {
-            const roomName = prompt("Enter new room name:")
+            const roomName = prompt("Masukkan nama project:")
             if (roomName) {
               const newRoomId = roomName.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-*|-*$/g, "") + "-" + Date.now()
               setRooms((prevRooms) => [
@@ -148,7 +148,7 @@ export function Sidebar() {
           }}
         >
           <PlusCircle className="h-4 w-4" />
-          New Room
+          Project baru
         </Button>
         <Button
           variant="ghost"

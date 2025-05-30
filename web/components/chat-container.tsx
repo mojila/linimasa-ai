@@ -30,32 +30,12 @@ interface MessageWithAttachment {
 }
 
 export function ChatContainer({ roomId = "general" }: ChatContainerProps) {
-  const {
-    messages: aiMessages,
-    input,
-    handleInputChange,
-    handleSubmit,
-    isLoading,
-  } = useChat({
-    api: "/api/chat",
-    id: roomId,
-  })
-
   const [messages, setMessages] = useState<MessageWithAttachment[]>([])
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
-
-  // Convert AI SDK messages to our format with attachments
-  useEffect(() => {
-    setMessages(
-      aiMessages.map((msg) => ({
-        id: msg.id,
-        role: msg.role as "user" | "assistant" | "system",
-        content: msg.content,
-      })),
-    )
-  }, [aiMessages])
+  const [input, setInput] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
 
   // Scroll to bottom when messages change
   useEffect(() => {
@@ -79,9 +59,6 @@ export function ChatContainer({ roomId = "general" }: ChatContainerProps) {
     e.preventDefault()
 
     if (input.trim() || selectedFile) {
-      // Handle the AI message submission
-      handleSubmit(e)
-
       // If there's a file, add it to our messages
       if (selectedFile) {
         const fileUrl = URL.createObjectURL(selectedFile)
@@ -176,8 +153,8 @@ export function ChatContainer({ roomId = "general" }: ChatContainerProps) {
           <div className="flex gap-2">
             <Input
               value={input}
-              onChange={handleInputChange}
-              placeholder="Type your message..."
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Ketik pesan..."
               className="flex-1"
               disabled={isLoading}
             />
@@ -198,7 +175,7 @@ export function ChatContainer({ roomId = "general" }: ChatContainerProps) {
               className="hidden"
               accept="image/*,.pdf,.doc,.docx,.txt,.zip,.rar"
             />
-            <Button type="submit" disabled={isLoading || (!input.trim() && !selectedFile)}>
+            <Button type="submit" className="text-white" disabled={isLoading || (!input.trim() && !selectedFile)}>
               <Send className="h-4 w-4" />
               <span className="ml-2 hidden sm:inline">Send</span>
             </Button>
