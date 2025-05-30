@@ -33,8 +33,8 @@ export function Sidebar() {
   const router = useRouter()
   const [rooms, setRooms] = useState<Room[]>([
     {
-      id: "general",
-      name: "General Chat",
+      id: "linimasa",
+      name: "Linimasa project",
       icon: <MessageSquare className="h-4 w-4" />,
     }
   ])
@@ -54,7 +54,7 @@ export function Sidebar() {
 
       // If user is currently in the deleted room, redirect to general
       if (pathname === `/chat/${roomToDelete}`) {
-        window.location.href = "/chat/general"
+        window.location.href = "/chat/linimasa"
       }
     }
   }
