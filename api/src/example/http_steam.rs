@@ -57,6 +57,7 @@ async fn stream_handler() -> impl IntoResponse {
         .unwrap()
 }
 
+#[allow(dead_code)]
 pub async fn chat_stream() -> Result<(), Error> {
     // Build our application with a single route
     let app = Router::new().route("/stream", get(stream_handler));
