@@ -1,42 +1,9 @@
-use futures::sink::Unfold;
+use crate::message::Message;
+use crate::room::Room;
+
 use ollama_rs::{Ollama, generation::completion::request::GenerationRequest};
 use tokio::io::{self, AsyncWriteExt};
 use tokio_stream::StreamExt;
-
-pub struct Message {
-    role: String,
-    content: String,
-}
-
-impl Message {
-    pub fn new(role: String, content: String) -> Self {
-        Self { role, content }
-    }
-}
-
-pub struct Room {
-    id: i32,
-    messages: Vec<Message>,
-}
-
-impl Room {
-    pub fn new(id: i32, messages: Vec<Message>) -> Self {
-        Self { id, messages }
-    }
-
-    pub fn generate_prompt(&self) -> String {
-        let mut prompt = String::new();
-        let messages = &self.messages;
-
-        for message in messages {
-            prompt.push_str(&format!("{}: {}\n", message.role, message.content));
-        }
-
-        prompt.push_str("Assistant: ");
-
-        prompt
-    }
-}
 
 pub async fn example_stream_ollama() -> Result<(), Box<dyn std::error::Error>> {
     let ollama = Ollama::default();
@@ -53,7 +20,7 @@ pub async fn example_stream_ollama() -> Result<(), Box<dyn std::error::Error>> {
     ];
 
     let room = Room::new(1, messages);
-    let prompt = room.generate_prompt();
+    let prompt = room.generate_prompt_for_ollama();
     let mut stream = ollama
         .generate_stream(GenerationRequest::new(model, prompt))
         .await
