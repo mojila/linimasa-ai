@@ -1,5 +1,6 @@
 use crate::message::Message;
 
+#[allow(dead_code)]
 pub struct Room {
     id: i32,
     messages: Vec<Message>,

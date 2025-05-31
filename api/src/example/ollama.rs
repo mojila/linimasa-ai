@@ -5,6 +5,7 @@ use ollama_rs::{Ollama, generation::completion::request::GenerationRequest};
 use tokio::io::{self, AsyncWriteExt};
 use tokio_stream::StreamExt;
 
+#[allow(dead_code)]
 pub async fn example_stream_ollama() -> Result<(), Box<dyn std::error::Error>> {
     let ollama = Ollama::default();
     let model: String = "aisingapore/Llama-SEA-LION-v3.5-8B-R:latest".to_string();
