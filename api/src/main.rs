@@ -1,5 +1,5 @@
 use std::{ptr::null, sync::Arc};
-use axum::{body::Body, http::StatusCode, response::IntoResponse, routing::get, Router};
+use axum::{body::Body, http::StatusCode, response::IntoResponse, routing::get, Json, Router};
 use sqlx::{postgres::PgPoolOptions, PgPool, Pool, Postgres};
 
 mod example;
@@ -63,11 +63,5 @@ async fn get_welcome() -> impl IntoResponse {
         data: None,
     };
 
-    let json = serde_json::to_string(&wel).unwrap();
-
-    axum::response::Response::builder()
-        .status(StatusCode::OK)
-        .header("Content-Type", "application/json")
-        .body(Body::from(json))
-        .unwrap()
+    Json(wel)
 }
