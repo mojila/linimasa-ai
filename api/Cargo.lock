@@ -928,6 +928,7 @@ dependencies = [
  "dotenvy",
  "futures",
  "ollama-rs",
+ "serde",
  "serde_json",
  "sqlx",
  "tokio",
@@ -1681,6 +1682,8 @@ dependencies = [
  "sha2",
  "smallvec",
  "thiserror",
+ "tokio",
+ "tokio-stream",
  "tracing",
  "url",
 ]
@@ -1719,6 +1722,7 @@ dependencies = [
  "sqlx-postgres",
  "sqlx-sqlite",
  "syn",
+ "tokio",
  "url",
 ]
 

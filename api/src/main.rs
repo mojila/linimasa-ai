@@ -1,6 +1,5 @@
-use std::sync::Arc;
-use axum::{body::Body, http::StatusCode, response::IntoResponse, routing::get, Json, Router};
-use serde_json::Value;
+use std::{ptr::null, sync::Arc};
+use axum::{body::Body, http::StatusCode, response::IntoResponse, routing::get, Router};
 use sqlx::{postgres::PgPoolOptions, PgPool, Pool, Postgres};
 
 mod example;
@@ -10,6 +9,15 @@ mod room;
 #[derive(Clone)]
 struct AppState {
     db: Arc<PgPool>,
+}
+
+
+#[derive(serde::Serialize)]
+struct Response<T> {
+    status: String,
+    message: String,
+    version: String,
+    data: T
 }
 
 impl AppState  {
@@ -37,7 +45,7 @@ async fn main() {
 
     // Build our application with a single route
     let app = Router::new()
-        .route("/stream", get(get_welcome))
+        .route("/", get(get_welcome))
         .with_state(app_state);
 
     let listener = tokio::net::TcpListener::bind("0.0.0.0:8000").await.unwrap();
@@ -48,11 +56,18 @@ async fn main() {
 }
 
 async fn get_welcome() -> impl IntoResponse {
-    let json = serde_json::json!({ "message": "Welcome to linimasa.ai API v0" });
+    let wel: Response<Option<String>> = Response {
+        status: "success".to_string(),
+        message: "Welcome to the API".to_string(),
+        version: "1.0.0".to_string(),
+        data: None,
+    };
+
+    let json = serde_json::to_string(&wel).unwrap();
 
     axum::response::Response::builder()
         .status(StatusCode::OK)
         .header("Content-Type", "application/json")
-        .body(Body::from(json.to_string()))
+        .body(Body::from(json))
         .unwrap()
 }
