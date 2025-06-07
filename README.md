@@ -2,6 +2,7 @@
 
 <div align="center">
   <img src="files/chat.png" alt="Linimasa.AI Chat Interface">
+  <img src="files/timeline.png" alt="Linimasa.AI Timeline">
 </div>
 
 
