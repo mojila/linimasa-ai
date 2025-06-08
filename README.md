@@ -3,7 +3,7 @@
 <div align="center">
   <img src="files/home.png" alt="Linimasa.AI Home interface">
   <img src="files/chat.png" alt="Linimasa.AI Chat Interface">
-  <img src="files/timeline.png" alt="Linimasa.AI Timeline">
+  <img src="files/timeline-integrated.png" alt="Linimasa.AI Timeline">
 </div>
 
 
