@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
-import { Home, MessageSquare, Zap, Sparkles, Flame, PlusCircle, Settings, MoreHorizontal, Trash2, Bot, LineChart } from "lucide-react"
+import { Home, MessageSquare, Zap, Sparkles, Flame, PlusCircle, Settings, MoreHorizontal, Trash2, Bot, LineChart, Link2 } from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import {
   AlertDialog,
@@ -110,12 +110,16 @@ export function Sidebar() {
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
+                      <DropdownMenuItem className="text-white" disabled>
+                          <Link2 className="mr-2 h-4 w-4" />
+                          Share 🚧
+                        </DropdownMenuItem>
                         <DropdownMenuItem
                           onClick={() => handleDeleteRoom(room.id)}
                           className="text-destructive focus:text-destructive"
                         >
                           <Trash2 className="mr-2 h-4 w-4" />
-                          Hapus Project
+                          Hapus
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>

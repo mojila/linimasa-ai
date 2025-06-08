@@ -19,7 +19,7 @@ export function UserProfile() {
   return (
     <div className="border-b p-4 flex items-center justify-between">
       <div className="flex items-center gap-4">
-        <Button className="text-white">Get Support ☎️</Button>
+        <Button className="text-white" variant="destructive">Laporkan Bug 🐞</Button>
       </div>
 
       <div className="flex items-center gap-2">
