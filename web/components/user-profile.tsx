@@ -23,8 +23,8 @@ export function UserProfile() {
       </div>
 
       <div className="flex items-center gap-2">
-        <Button variant="ghost" size="icon" className="relative" onClick={() => setNotifications(0)}>
-          <Bell className="h-5 w-5" />
+        <Button variant="ghost" size="icon" className="relative" onClick={() => setNotifications(0)} disabled>
+          <Bell className="h-5 w-5" /> 🚧
           {notifications > 0 && (
             <span className="absolute top-1 right-1 h-4 w-4 rounded-full bg-primary text-[10px] flex items-center justify-center text-primary-foreground">
               {notifications}
@@ -46,13 +46,13 @@ export function UserProfile() {
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem disabled>
               <User className="mr-2 h-4 w-4" />
-              Profile
+              Profile 🚧
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem disabled>
               <Settings className="mr-2 h-4 w-4" />
-              Settings
+              Settings 🚧
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={handleLogout}>

@@ -154,9 +154,10 @@ export function Sidebar() {
           variant="ghost"
           className="w-full justify-start gap-2"
           onClick={() => alert("Settings feature coming soon!")}
+          disabled
         >
           <Settings className="h-4 w-4" />
-          Settings
+          Settings 🚧
         </Button>
       </div>
       <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
