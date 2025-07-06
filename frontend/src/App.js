@@ -1,5 +1,5 @@
 import React from 'react';
-import { Gantt, Task } from 'gantt-task-react';
+import { Gantt } from 'gantt-task-react';
 import 'gantt-task-react/dist/index.css';
 import './App.css';
 
