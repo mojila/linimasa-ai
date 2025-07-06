@@ -1,0 +1,23 @@
+.new-objective-form {
+  margin-bottom: 20px;
+}
+
+.new-objective-form input {
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.new-objective-form button {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.new-objective-form button:hover {
+  background-color: #0056b3;
+}

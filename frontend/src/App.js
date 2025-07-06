@@ -1,8 +1,10 @@
+import React, { useState } from 'react';
 import { Gantt } from 'gantt-task-react';
 import 'gantt-task-react/dist/index.css';
 import './App.css';
+import NewObjective from './components/NewObjective';
 
-const tasks = [
+const initialTasks = [
   {
     start: new Date(2024, 6, 1),
     end: new Date(2024, 6, 10),
@@ -36,9 +38,25 @@ const tasks = [
 ];
 
 function App() {
+  const [tasks, setTasks] = useState(initialTasks);
+
+  const handleAddObjective = (objective) => {
+    const newTaskId = `Task ${tasks.length}`;
+    const newObjective = {
+      ...objective,
+      id: newTaskId,
+      type: 'task',
+      progress: 0,
+      isDisabled: false,
+      styles: { progressColor: '#ffbb54', progressSelectedColor: '#ff9e0d' },
+    };
+    setTasks([...tasks, newObjective]);
+  };
+
   return (
     <div className="App">
       <h1>Project Timeline</h1>
+      <NewObjective onAddObjective={handleAddObjective} />
       <Gantt tasks={tasks} />
     </div>
   );
