@@ -1,5 +1,5 @@
-use std::{ptr::null, sync::Arc};
-use axum::{body::Body, http::StatusCode, response::IntoResponse, routing::get, Json, Router};
+use std::sync::Arc;
+use axum::{response::IntoResponse, routing::get, Json, Router};
 use sqlx::{postgres::PgPoolOptions, PgPool, Pool, Postgres};
 
 mod example;
@@ -10,7 +10,6 @@ mod room;
 struct AppState {
     db: Arc<PgPool>,
 }
-
 
 #[derive(serde::Serialize)]
 struct Response<T> {
